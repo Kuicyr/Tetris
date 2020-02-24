@@ -18,6 +18,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1X74qr5GwMcTerobUbGyRSXCEqd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -28,6 +31,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -41,6 +45,9 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="mr.sample.blocks" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Mateusz\Desktop\Tetris\src\resource" />
       <recent name="C:\Users\Mateusz\Desktop\Tetris\src\main\resources" />
@@ -52,7 +59,7 @@
       <module name="Tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="mr.sample.*" />
+          <option name="PATTERN" value="mr.sample.blocks.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -65,7 +72,7 @@
       <module name="Tetris" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="mr.sample.*" />
+          <option name="PATTERN" value="mr.sample.blocks.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,6 +112,12 @@
       <workItem from="1580383998297" duration="46000" />
       <workItem from="1580385088536" duration="550000" />
       <workItem from="1580391643924" duration="5260000" />
+      <workItem from="1580404258421" duration="239000" />
+      <workItem from="1580476795219" duration="3000" />
+      <workItem from="1580813057973" duration="64000" />
+      <workItem from="1581625085082" duration="148000" />
+      <workItem from="1582539881395" duration="104000" />
+      <workItem from="1582540086221" duration="29367000" />
     </task>
     <servers />
   </component>
@@ -116,26 +129,30 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state x="552" y="219" key="#Project_Structure/0.40.1920.1040@0.40.1920.1040" timestamp="1580396721429" />
-    <state x="765" y="277" key="#com.intellij.ide.util.MemberChooser" timestamp="1580385154823">
+    <state x="765" y="277" key="#com.intellij.ide.util.MemberChooser" timestamp="1582581226302">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state x="765" y="277" key="#com.intellij.ide.util.MemberChooser/0.40.1920.1040@0.40.1920.1040" timestamp="1580385154823" />
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom" timestamp="1580397318038">
+    <state x="765" y="277" key="#com.intellij.ide.util.MemberChooser/0.40.1920.1040@0.40.1920.1040" timestamp="1582581226302" />
+    <state x="640" y="297" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1580813100932">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1580397318038" />
-    <state width="1877" height="348" key="GridCell.Tab.0.center" timestamp="1580397318038">
+    <state x="640" y="297" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.40.1920.1040@0.40.1920.1040" timestamp="1580813100932" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1582585422863">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1580397318038" />
-    <state width="1877" height="348" key="GridCell.Tab.0.left" timestamp="1580397318037">
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.40.1920.1040@0.40.1920.1040" timestamp="1582585422863" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1582585422863">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1580397318037" />
-    <state width="1877" height="348" key="GridCell.Tab.0.right" timestamp="1580397318038">
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.40.1920.1040@0.40.1920.1040" timestamp="1582585422863" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1582585422863">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1580397318038" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.40.1920.1040@0.40.1920.1040" timestamp="1582585422863" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1582585422863">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.40.1920.1040@0.40.1920.1040" timestamp="1582585422863" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1580397318039">
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
@@ -152,5 +169,9 @@
       <screen x="0" y="40" width="1920" height="1040" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.40.1920.1040@0.40.1920.1040" timestamp="1580397318039" />
+    <state x="769" y="478" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1580404395535">
+      <screen x="0" y="40" width="1920" height="1040" />
+    </state>
+    <state x="769" y="478" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.40.1920.1040@0.40.1920.1040" timestamp="1580404395535" />
   </component>
 </project>

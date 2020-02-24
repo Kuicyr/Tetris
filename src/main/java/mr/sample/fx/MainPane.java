@@ -8,6 +8,7 @@ import mr.sample.Application;
 public class MainPane
 {
     private Pane pane;
+    private Grid grid;
 
     public MainPane()
     {
@@ -17,10 +18,20 @@ public class MainPane
         pane.setPrefHeight(Application.height);
         pane.setPrefWidth(Application.width);
         pane.getChildren().add(imageView);
+
+        grid = new Grid();
+        grid.setTranslateX(Application.blockSize);
+        grid.setTranslateY(Application.blockSize);
+        pane.getChildren().add(grid);
     }
 
     public Pane getPane()
     {
         return pane;
+    }
+
+    public Grid getGrid()
+    {
+        return grid;
     }
 }

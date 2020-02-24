@@ -13,6 +13,7 @@ public class Application extends javafx.application.Application
 {
     public static int width = 170 * 4;
     public static int height = 220 * 4;
+    public static int blockSize = height / 22;
 
     private double xOffset;
     private double yOffset;
@@ -37,6 +38,38 @@ public class Application extends javafx.application.Application
         {
             primaryStage.setX(event.getScreenX() - xOffset);
             primaryStage.setY(event.getScreenY() - yOffset);
+        });
+
+        scene.setOnKeyPressed(event ->
+        {
+            switch (event.getCode())
+            {
+                case W:
+                {
+                    mainPane.getGrid().updater.rotate();
+                    break;
+                }
+                case S:
+                {
+                    mainPane.getGrid().updater.down();
+                    break;
+                }
+                case A:
+                {
+                    mainPane.getGrid().updater.left();
+                    break;
+                }
+                case D:
+                {
+                    mainPane.getGrid().updater.right();
+                    break;
+                }
+                case ESCAPE:
+                {
+                    System.exit(0);
+                    break;
+                }
+            }
         });
 
         primaryStage.initStyle(StageStyle.UNDECORATED);
