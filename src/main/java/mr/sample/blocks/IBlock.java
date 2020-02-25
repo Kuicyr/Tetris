@@ -24,6 +24,7 @@ public class IBlock extends Block
         switch (rotation)
         {
             case 0:
+            case 2:
             {
                 rotated.add(new Position(position.x, position.y));
                 rotated.add(new Position(position.x, position.y - 1));
@@ -37,14 +38,6 @@ public class IBlock extends Block
                 rotated.add(new Position(position.x, position.y));
                 rotated.add(new Position(position.x - 2, position.y));
                 rotated.add(new Position(position.x + 1, position.y));
-                break;
-            }
-            case 2:
-            {
-                rotated.add(new Position(position.x, position.y));
-                rotated.add(new Position(position.x, position.y - 1));
-                rotated.add(new Position(position.x, position.y + 1));
-                rotated.add(new Position(position.x, position.y + 2));
                 break;
             }
             case 3:

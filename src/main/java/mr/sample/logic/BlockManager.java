@@ -4,12 +4,29 @@ import mr.sample.blocks.*;
 
 import java.util.Random;
 
-public class BlockChooser extends Random
+public class BlockManager extends Random
 {
+    private int blockCount;
+
+    public BlockManager(int blockCount)
+    {
+        this.blockCount = blockCount;
+    }
+
+    public int randomBlockId()
+    {
+        return nextInt(blockCount);
+    }
+
     public Block randomBlock()
     {
+        return blockId(randomBlockId());
+    }
+
+    public Block blockId(int id)
+    {
         Block blockToReturn = null;
-        switch (nextInt(7))
+        switch (id)
         {
             case 0:
             {

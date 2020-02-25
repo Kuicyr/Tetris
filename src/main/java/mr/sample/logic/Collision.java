@@ -1,8 +1,5 @@
 package mr.sample.logic;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import mr.sample.Application;
 import mr.sample.blocks.*;
 import mr.sample.fx.Grid;
 
@@ -10,19 +7,19 @@ import mr.sample.fx.Grid;
 public class Collision
 {
     private Grid grid;
-    private Updater updater;
+    private Controls controls;
 
-    public Collision(Grid grid, Updater updater)
+    public Collision(Grid grid, Controls controls)
     {
         this.grid = grid;
-        this.updater = updater;
+        this.controls = controls;
     }
 
     public void checkForSide(boolean left)
     {
         boolean correct = true;
 
-        for (Position position : updater.block.blocks)
+        for (Position position : controls.block.blocks)
         {
             if (position.x >= 1 && position.x <= 10)
             {
@@ -40,10 +37,10 @@ public class Collision
         {
             if (left)
             {
-                updater.block.right();
+                controls.block.right();
             } else
             {
-                updater.block.left();
+                controls.block.left();
             }
         }
     }
@@ -52,7 +49,7 @@ public class Collision
     {
         boolean correct = true;
 
-        for (Position position : updater.block.blocks)
+        for (Position position : controls.block.blocks)
         {
             if (grid.gridTable[position.x - 1][position.y - 1] != 0)
             {
@@ -62,20 +59,20 @@ public class Collision
 
         if (!correct)
         {
-            updater.block.rotate();
-            updater.block.rotate();
-            updater.block.rotate();
+            controls.block.rotate();
+            controls.block.rotate();
+            controls.block.rotate();
         }
     }
 
     public boolean checkForGround()
     {
-        if (updater.block != null)
+        if (controls.block != null)
         {
-            for (Position position : updater.block.blocks)
+            for (Position position : controls.block.blocks)
             {
                 boolean lowerBlocked = false;
-                for (Position lowerOne : updater.block.blocks)
+                for (Position lowerOne : controls.block.blocks)
                 {
                     if (lowerOne.x == position.x && lowerOne.y == position.y + 1)
                     {
@@ -100,6 +97,7 @@ public class Collision
 
     public void removeFullRow()
     {
+        int rowCount = 0;
         for (int y = 0; y < 20; y++)
         {
             boolean fullRow = true;
@@ -113,12 +111,14 @@ public class Collision
 
             if (fullRow)
             {
+                rowCount++;
                 for (int x = 0; x < 10; x++)
                 {
                     grid.gridTable[x][y] = 0;
                 }
             }
         }
+        controls.score.addScoreForFull(rowCount);
     }
 
     public void fillGaps()

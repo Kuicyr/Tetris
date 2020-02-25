@@ -6,22 +6,31 @@ import mr.sample.Application;
 import mr.sample.blocks.Block;
 import mr.sample.blocks.Position;
 import mr.sample.fx.Grid;
+import mr.sample.fx.NextBlock;
+import mr.sample.fx.Score;
 
-public class Updater
+public class Controls
 {
     public Block block;
+    public int nextBlockId;
+    public Score score;
 
+    private NextBlock nextBlock;
     private Grid grid;
     private Collision collision;
-    private BlockChooser blockChooser;
+    private BlockManager blockManager;
 
-    public Updater(Grid grid)
+    public Controls(Grid grid, NextBlock nextBlock, Score score)
     {
+        this.nextBlock = nextBlock;
         this.grid = grid;
+        this.score = score;
         grid.gridTable = new int[10][20];
         collision = new Collision(grid, this);
-        blockChooser = new BlockChooser();
-        block = blockChooser.randomBlock();
+        blockManager = new BlockManager(7);
+        block = blockManager.randomBlock();
+        nextBlockId = blockManager.randomBlockId();
+        nextBlock.next(nextBlockId);
         setBlock();
     }
 
@@ -97,22 +106,29 @@ public class Updater
         }
     }
 
-    public void down()
+    public void down(boolean allDown)
     {
-        if (block != null)
+        int rowNumber = 0;
+        boolean czy = true;
+        do
         {
             clearBlock();
             if (!collision.checkForGround())
             {
                 block.down();
+                rowNumber++;
             } else
             {
+                czy = false;
                 setBlock();
                 collision.removeFullRow();
                 collision.fillGaps();
-                block = blockChooser.randomBlock();
+                block = blockManager.blockId(nextBlockId);
+                nextBlockId = blockManager.randomBlockId();
+                nextBlock.next(nextBlockId);
             }
             setBlock();
-        }
+        } while (czy && allDown);
+        score.addScore(rowNumber);
     }
 }

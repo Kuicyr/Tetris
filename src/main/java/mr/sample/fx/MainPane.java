@@ -9,6 +9,8 @@ public class MainPane
 {
     private Pane pane;
     private Grid grid;
+    private NextBlock nextBlock;
+    private Score score;
 
     public MainPane()
     {
@@ -19,10 +21,21 @@ public class MainPane
         pane.setPrefWidth(Application.width);
         pane.getChildren().add(imageView);
 
-        grid = new Grid();
+        nextBlock = new NextBlock();
+        nextBlock.setTranslateX(Application.blockSize * 10);
+        nextBlock.setTranslateY(Application.blockSize);
+        pane.getChildren().add(nextBlock);
+
+        score = new Score();
+        score.setTranslateX(Application.blockSize * 13);
+        score.setTranslateY(Application.blockSize * 8);
+        pane.getChildren().add(score);
+
+        grid = new Grid(nextBlock,score);
         grid.setTranslateX(Application.blockSize);
         grid.setTranslateY(Application.blockSize);
         pane.getChildren().add(grid);
+
     }
 
     public Pane getPane()

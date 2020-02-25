@@ -1,9 +1,6 @@
 package mr.sample;
 
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import mr.sample.fx.MainPane;
@@ -46,22 +43,27 @@ public class Application extends javafx.application.Application
             {
                 case W:
                 {
-                    mainPane.getGrid().updater.rotate();
+                    mainPane.getGrid().controls.rotate();
                     break;
                 }
                 case S:
                 {
-                    mainPane.getGrid().updater.down();
+                    mainPane.getGrid().controls.down(false);
                     break;
                 }
                 case A:
                 {
-                    mainPane.getGrid().updater.left();
+                    mainPane.getGrid().controls.left();
                     break;
                 }
                 case D:
                 {
-                    mainPane.getGrid().updater.right();
+                    mainPane.getGrid().controls.right();
+                    break;
+                }
+                case SPACE:
+                {
+                    mainPane.getGrid().controls.down(true);
                     break;
                 }
                 case ESCAPE:

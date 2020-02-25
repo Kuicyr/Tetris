@@ -1,26 +1,20 @@
 package mr.sample.fx;
 
 import javafx.animation.AnimationTimer;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import mr.sample.Application;
-import mr.sample.blocks.*;
-import mr.sample.logic.BlockChooser;
-import mr.sample.logic.Collision;
-import mr.sample.logic.Updater;
+import mr.sample.logic.Controls;
 
 public class Grid extends Pane
 {
     public int[][] gridTable;
-    public Updater updater;
+    public Controls controls;
 
     private int counter;
 
 
-    public Grid()
+    public Grid(NextBlock nextBlock, Score score)
     {
-        updater = new Updater(this);
+        controls = new Controls(this, nextBlock, score);
 
         AnimationTimer timer = new AnimationTimer()
         {
@@ -36,10 +30,10 @@ public class Grid extends Pane
 
     private void update()
     {
-        if (counter == 30)
+        if (counter == 40)
         {
-            updater.down();
-            counter %= 30;
+            controls.down(false);
+            counter = 0;
         }
         counter++;
 
