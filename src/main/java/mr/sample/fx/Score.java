@@ -66,7 +66,7 @@ public class Score extends Pane
 
     private void setStyle(Text text)
     {
-        text.setFont(Font.loadFont("file:src/main/resources/Bunbun.otf", 35));
-        text.setFill(Color.WHITE);
+        text.setFont(Font.loadFont("file:src/main/resources/Tetris.ttf", 35));
+        text.setFill(Color.valueOf("357edf"));
     }
 }
