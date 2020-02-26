@@ -23,25 +23,25 @@ public class InfPanel extends Pane
         this.fullRowToNextLevel = fullRowToNextLevel;
 
         Text score = new Text();
-        score.setText("Score");
-        setStyle(score);
+        score.setText("SCORE");
+        TextStyle.setStyle(score, 35);
         getChildren().add(score);
 
         scoreText = new Text();
         scoreText.setText(String.valueOf(scoreValue));
-        setStyle(scoreText);
+        TextStyle.setStyle(scoreText, 35);
         scoreText.setTranslateY(Application.blockSize);
         getChildren().add(scoreText);
 
         Text level = new Text();
         level.setTranslateY(Application.blockSize * 3);
-        level.setText("Level");
-        setStyle(level);
+        level.setText("LEVEL");
+        TextStyle.setStyle(level, 35);
         getChildren().add(level);
 
         levelText = new Text();
         levelText.setText(String.valueOf(scoreValue));
-        setStyle(levelText);
+        TextStyle.setStyle(levelText, 35);
         levelText.setTranslateY(Application.blockSize * 4);
         getChildren().add(levelText);
     }
@@ -51,20 +51,11 @@ public class InfPanel extends Pane
         return scoreValue;
     }
 
-    public int getLevelValue()
-    {
-        return levelValue;
-    }
-
     public boolean increaseLevel()
     {
         levelValue += 1;
         levelText.setText(String.valueOf(levelValue / fullRowToNextLevel));
-        if (levelValue % fullRowToNextLevel == 0)
-        {
-            return true;
-        }
-        return false;
+        return levelValue % fullRowToNextLevel == 0;
     }
 
     public void addScore(int i)
@@ -104,11 +95,5 @@ public class InfPanel extends Pane
         }
         scoreValue += amount * ((levelValue / fullRowToNextLevel) + 1);
         scoreText.setText(String.valueOf(scoreValue));
-    }
-
-    private void setStyle(Text text)
-    {
-        text.setFont(Font.loadFont("file:src/main/resources/Tetris.ttf", 35));
-        text.setFill(Color.valueOf("357edf"));
     }
 }

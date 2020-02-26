@@ -2,6 +2,8 @@ package mr.sample.logic;
 
 import mr.sample.blocks.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /* author:
@@ -11,15 +13,24 @@ Mateusz Ryciuk
 public class BlockManager extends Random
 {
     private int blockCount;
+    private ArrayList<Integer> bag;
 
     public BlockManager(int blockCount)
     {
         this.blockCount = blockCount;
+        bag = new ArrayList<>();
+        fillBag();
     }
 
     public int randomBlockId()
     {
-        return nextInt(blockCount);
+        if (bag.size() == 0)
+        {
+            fillBag();
+        }
+        int temp = bag.get(0);
+        bag.remove(0);
+        return temp;
     }
 
     public Block randomBlock()
@@ -70,5 +81,25 @@ public class BlockManager extends Random
         }
 
         return blockToReturn;
+    }
+
+    private void fillBag()
+    {
+        bag.clear();
+        for (int i = 0; i < blockCount; i++)
+        {
+            bag.add(i);
+        }
+        Collections.shuffle(bag);
+    }
+
+    private void showBag()
+    {
+        String line = "";
+        for (Integer integer : bag)
+        {
+            line += integer + "|";
+        }
+        System.out.println(line);
     }
 }
