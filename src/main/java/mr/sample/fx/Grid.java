@@ -15,12 +15,14 @@ public class Grid extends Pane
     public boolean endGame;
 
     private int counter;
+    private int time;
     private AnimationTimer timer;
 
 
-    public Grid(NextBlock nextBlock, Score score)
+    public Grid(NextBlock nextBlock, InfPanel infPanel)
     {
-        controls = new Controls(this, nextBlock, score);
+        time = 40;
+        controls = new Controls(this, nextBlock, infPanel);
         endGame = false;
         timer = new AnimationTimer()
         {
@@ -41,7 +43,7 @@ public class Grid extends Pane
             timer.stop();
         }
 
-        if (counter == 40 && !endGame)
+        if (counter >= time && !endGame)
         {
             controls.down(false);
             counter = 0;
@@ -50,5 +52,12 @@ public class Grid extends Pane
 
     }
 
-
+    public void speedUp()
+    {
+        time *= (4 / 5.0);
+        if (time < 1)
+        {
+            time = 1;
+        }
+    }
 }

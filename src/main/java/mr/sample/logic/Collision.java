@@ -124,7 +124,14 @@ public class Collision
                 }
             }
         }
-        controls.score.addScoreForFull(rowCount);
+        if (rowCount > 0)
+        {
+            if (controls.infPanel.increaseLevel())
+            {
+                grid.speedUp();
+            }
+            controls.infPanel.addScoreForFull(rowCount);
+        }
     }
 
     public void fillGaps()

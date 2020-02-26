@@ -6,8 +6,9 @@ import mr.sample.Application;
 import mr.sample.blocks.Block;
 import mr.sample.blocks.Position;
 import mr.sample.fx.Grid;
+import mr.sample.fx.LoseGame;
 import mr.sample.fx.NextBlock;
-import mr.sample.fx.Score;
+import mr.sample.fx.InfPanel;
 
 /* author:
 Mateusz Ryciuk
@@ -17,18 +18,18 @@ public class Controls
 {
     public Block block;
     public int nextBlockId;
-    public Score score;
+    public InfPanel infPanel;
 
     private NextBlock nextBlock;
     private Grid grid;
     private Collision collision;
     private BlockManager blockManager;
 
-    public Controls(Grid grid, NextBlock nextBlock, Score score)
+    public Controls(Grid grid, NextBlock nextBlock, InfPanel infPanel)
     {
         this.nextBlock = nextBlock;
         this.grid = grid;
-        this.score = score;
+        this.infPanel = infPanel;
         grid.gridTable = new int[10][20];
         collision = new Collision(grid, this);
         blockManager = new BlockManager(7);
@@ -138,16 +139,24 @@ public class Controls
                     block = blockManager.blockId(nextBlockId);
                     if (collision.checkForLose())
                     {
-                        grid.endGame = true;
-                        setBlock();
-                        block = null;
+                        gameLose();
                     }
                     nextBlockId = blockManager.randomBlockId();
                     nextBlock.next(nextBlockId);
                 }
                 setBlock();
             } while (czy && allDown);
-            score.addScore(rowNumber);
+            infPanel.addScore(rowNumber);
         }
+    }
+
+    private void gameLose()
+    {
+        grid.endGame = true;
+        setBlock();
+        block = null;
+        LoseGame loseGame = new LoseGame();
+        loseGame.display(infPanel.getScoreValue());
+        grid.getChildren().add(loseGame);
     }
 }

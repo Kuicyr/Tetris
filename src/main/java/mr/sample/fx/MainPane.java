@@ -31,12 +31,12 @@ public class MainPane
         nextBlock.setTranslateY(Application.blockSize);
         pane.getChildren().add(nextBlock);
 
-        Score score = new Score();
-        score.setTranslateX(Application.blockSize * 13);
-        score.setTranslateY(Application.blockSize * 8);
-        pane.getChildren().add(score);
+        InfPanel infPanel = new InfPanel(6);
+        infPanel.setTranslateX(Application.blockSize * 13);
+        infPanel.setTranslateY(Application.blockSize * 8);
+        pane.getChildren().add(infPanel);
 
-        grid = new Grid(nextBlock, score);
+        grid = new Grid(nextBlock, infPanel);
         grid.setTranslateX(Application.blockSize);
         grid.setTranslateY(Application.blockSize);
         pane.getChildren().add(grid);

@@ -10,13 +10,18 @@ import mr.sample.Application;
 Mateusz Ryciuk
 */
 
-public class Score extends Pane
+public class InfPanel extends Pane
 {
     private int scoreValue;
     private Text scoreText;
+    private int levelValue;
+    private Text levelText;
+    private int fullRowToNextLevel;
 
-    public Score()
+    public InfPanel(int fullRowToNextLevel)
     {
+        this.fullRowToNextLevel = fullRowToNextLevel;
+
         Text score = new Text();
         score.setText("Score");
         setStyle(score);
@@ -27,6 +32,39 @@ public class Score extends Pane
         setStyle(scoreText);
         scoreText.setTranslateY(Application.blockSize);
         getChildren().add(scoreText);
+
+        Text level = new Text();
+        level.setTranslateY(Application.blockSize * 3);
+        level.setText("Level");
+        setStyle(level);
+        getChildren().add(level);
+
+        levelText = new Text();
+        levelText.setText(String.valueOf(scoreValue));
+        setStyle(levelText);
+        levelText.setTranslateY(Application.blockSize * 4);
+        getChildren().add(levelText);
+    }
+
+    public int getScoreValue()
+    {
+        return scoreValue;
+    }
+
+    public int getLevelValue()
+    {
+        return levelValue;
+    }
+
+    public boolean increaseLevel()
+    {
+        levelValue += 1;
+        levelText.setText(String.valueOf(levelValue / fullRowToNextLevel));
+        if (levelValue % fullRowToNextLevel == 0)
+        {
+            return true;
+        }
+        return false;
     }
 
     public void addScore(int i)
@@ -64,7 +102,7 @@ public class Score extends Pane
                 break;
             }
         }
-        scoreValue += amount;
+        scoreValue += amount * ((levelValue / fullRowToNextLevel) + 1);
         scoreText.setText(String.valueOf(scoreValue));
     }
 
