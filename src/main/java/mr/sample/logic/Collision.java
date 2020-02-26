@@ -3,6 +3,9 @@ package mr.sample.logic;
 import mr.sample.blocks.*;
 import mr.sample.fx.Grid;
 
+/* author:
+Mateusz Ryciuk
+*/
 
 public class Collision
 {
@@ -54,6 +57,7 @@ public class Collision
             if (grid.gridTable[position.x - 1][position.y - 1] != 0)
             {
                 correct = false;
+                break;
             }
         }
 
@@ -77,6 +81,7 @@ public class Collision
                     if (lowerOne.x == position.x && lowerOne.y == position.y + 1)
                     {
                         lowerBlocked = true;
+                        break;
                     }
                 }
 
@@ -106,6 +111,7 @@ public class Collision
                 if (grid.gridTable[x][y] == 0)
                 {
                     fullRow = false;
+                    break;
                 }
             }
 
@@ -133,6 +139,7 @@ public class Collision
                     if (grid.gridTable[x][y + 1] != 0)
                     {
                         emptyBelow = false;
+                        break;
                     }
                 }
 
@@ -146,5 +153,17 @@ public class Collision
                 }
             }
         }
+    }
+
+    public boolean checkForLose()
+    {
+        for (Position block : controls.block.blocks)
+        {
+            if (grid.gridTable[block.x - 1][block.y - 1] != 0)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

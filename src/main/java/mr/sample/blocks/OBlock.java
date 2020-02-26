@@ -1,6 +1,8 @@
 package mr.sample.blocks;
 
-import java.util.ArrayList;
+/* author:
+Mateusz Ryciuk
+*/
 
 public class OBlock extends Block
 {

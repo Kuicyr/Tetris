@@ -4,6 +4,10 @@ import mr.sample.blocks.*;
 
 import java.util.Random;
 
+/* author:
+Mateusz Ryciuk
+*/
+
 public class BlockManager extends Random
 {
     private int blockCount;

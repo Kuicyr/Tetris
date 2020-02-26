@@ -6,6 +6,10 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import mr.sample.Application;
 
+/* author:
+Mateusz Ryciuk
+*/
+
 public class Score extends Pane
 {
     private int scoreValue;

@@ -9,6 +9,10 @@ import mr.sample.fx.Grid;
 import mr.sample.fx.NextBlock;
 import mr.sample.fx.Score;
 
+/* author:
+Mateusz Ryciuk
+*/
+
 public class Controls
 {
     public Block block;
@@ -57,19 +61,25 @@ public class Controls
 
     private void clearBlock()
     {
-        for (Position position : block.blocks)
+        if (block != null)
         {
-            grid.gridTable[position.x - 1][position.y - 1] = 0;
+            for (Position position : block.blocks)
+            {
+                grid.gridTable[position.x - 1][position.y - 1] = 0;
+            }
         }
     }
 
     private void setBlock()
     {
-        for (Position position : block.blocks)
+        if (block != null)
         {
-            grid.gridTable[position.x - 1][position.y - 1] = block.id;
+            for (Position position : block.blocks)
+            {
+                grid.gridTable[position.x - 1][position.y - 1] = block.id;
+            }
+            update();
         }
-        update();
     }
 
     public void rotate()
@@ -108,27 +118,36 @@ public class Controls
 
     public void down(boolean allDown)
     {
-        int rowNumber = 0;
-        boolean czy = true;
-        do
+        if (block != null)
         {
-            clearBlock();
-            if (!collision.checkForGround())
+            int rowNumber = 0;
+            boolean czy = true;
+            do
             {
-                block.down();
-                rowNumber++;
-            } else
-            {
-                czy = false;
+                clearBlock();
+                if (!collision.checkForGround())
+                {
+                    block.down();
+                    rowNumber++;
+                } else
+                {
+                    czy = false;
+                    setBlock();
+                    collision.removeFullRow();
+                    collision.fillGaps();
+                    block = blockManager.blockId(nextBlockId);
+                    if (collision.checkForLose())
+                    {
+                        grid.endGame = true;
+                        setBlock();
+                        block = null;
+                    }
+                    nextBlockId = blockManager.randomBlockId();
+                    nextBlock.next(nextBlockId);
+                }
                 setBlock();
-                collision.removeFullRow();
-                collision.fillGaps();
-                block = blockManager.blockId(nextBlockId);
-                nextBlockId = blockManager.randomBlockId();
-                nextBlock.next(nextBlockId);
-            }
-            setBlock();
-        } while (czy && allDown);
-        score.addScore(rowNumber);
+            } while (czy && allDown);
+            score.addScore(rowNumber);
+        }
     }
 }

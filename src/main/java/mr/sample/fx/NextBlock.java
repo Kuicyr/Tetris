@@ -11,6 +11,10 @@ import mr.sample.logic.BlockManager;
 
 import java.util.ArrayList;
 
+/* author:
+Mateusz Ryciuk
+*/
+
 public class NextBlock extends Pane
 {
     private ArrayList<Group> blocks;

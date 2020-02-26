@@ -2,6 +2,10 @@ package mr.sample.blocks;
 
 import java.util.ArrayList;
 
+/* author:
+Mateusz Ryciuk
+*/
+
 public class SBlock extends Block
 {
     private int rotation;

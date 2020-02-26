@@ -61,6 +61,11 @@ public class Application extends javafx.application.Application
                     mainPane.getGrid().controls.right();
                     break;
                 }
+                case R:
+                {
+                    mainPane.restart();
+                    break;
+                }
                 case SPACE:
                 {
                     mainPane.getGrid().controls.down(true);

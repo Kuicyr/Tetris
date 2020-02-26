@@ -1,5 +1,9 @@
 package mr.sample.blocks;
 
+/* author:
+Mateusz Ryciuk
+*/
+
 public class Position
 {
     public int x;
