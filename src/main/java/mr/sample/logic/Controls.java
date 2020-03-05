@@ -10,6 +10,7 @@ import mr.sample.fx.Grid;
 import mr.sample.fx.LoseGame;
 import mr.sample.fx.NextBlock;
 import mr.sample.fx.InfPanel;
+import mr.sample.si.Rater;
 
 /* author:
 Mateusz Ryciuk
@@ -26,6 +27,7 @@ public class Controls
     private Collision collision;
     private BlockManager blockManager;
     private ShadowBlock shadowBlock;
+    private Rater rater;
 
     public Controls(Grid grid, NextBlock nextBlock, InfPanel infPanel)
     {
@@ -39,6 +41,8 @@ public class Controls
         nextBlockId = blockManager.randomBlockId();
         nextBlock.next(nextBlockId);
         shadowBlock = new ShadowBlock(block, grid);
+
+        rater = new Rater(grid.gridTable);
         setBlock();
     }
 
@@ -90,6 +94,7 @@ public class Controls
     {
         if (block != null)
         {
+            rater.analyze(shadowBlock);
             for (Position position : shadowBlock.getPosition())
             {
                 grid.gridTable[position.x - 1][position.y - 1] = -1;
@@ -163,6 +168,7 @@ public class Controls
                     }
                     nextBlockId = blockManager.randomBlockId();
                     nextBlock.next(nextBlockId);
+                  //  rater.analyze(shadowBlock);
                 }
                 setBlock();
             } while (czy && allDown);
@@ -183,7 +189,7 @@ public class Controls
     public void stop()
     {
         grid.getChildren().clear();
-        for (int x = 3; x < 7; x+=3)
+        for (int x = 3; x < 7; x += 3)
         {
             for (int y = 8; y < 12; y++)
             {

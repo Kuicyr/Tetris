@@ -37,7 +37,7 @@ public class Grid extends Pane
             }
         };
 
-        timer.start();
+        //timer.start();
     }
 
     private void update()

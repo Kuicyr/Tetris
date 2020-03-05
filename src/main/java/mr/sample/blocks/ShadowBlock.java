@@ -4,6 +4,10 @@ import mr.sample.fx.Grid;
 
 import java.util.ArrayList;
 
+/* author:
+Mateusz Ryciuk
+*/
+
 public class ShadowBlock
 {
     public ArrayList<Position> blocks;
