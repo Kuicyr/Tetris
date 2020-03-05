@@ -26,7 +26,7 @@ public class Collision
         {
             if (position.x >= 1 && position.x <= 10)
             {
-                if (grid.gridTable[position.x - 1][position.y - 1] != 0)
+                if (grid.gridTable[position.x - 1][position.y - 1] > 0)
                 {
                     correct = false;
                 }
@@ -54,7 +54,7 @@ public class Collision
 
         for (Position position : controls.block.blocks)
         {
-            if (grid.gridTable[position.x - 1][position.y - 1] != 0)
+            if (grid.gridTable[position.x - 1][position.y - 1] > 0)
             {
                 correct = false;
                 break;
@@ -90,7 +90,7 @@ public class Collision
                     if (position.y == 20)
                     {
                         return true;
-                    } else if (grid.gridTable[position.x - 1][position.y] != 0)
+                    } else if (grid.gridTable[position.x - 1][position.y] > 0)
                     {
                         return true;
                     }
@@ -143,7 +143,7 @@ public class Collision
                 boolean emptyBelow = true;
                 for (int x = 0; x < 10; x++)
                 {
-                    if (grid.gridTable[x][y + 1] != 0)
+                    if (grid.gridTable[x][y + 1] > 0)
                     {
                         emptyBelow = false;
                         break;
@@ -166,7 +166,7 @@ public class Collision
     {
         for (Position block : controls.block.blocks)
         {
-            if (grid.gridTable[block.x - 1][block.y - 1] != 0)
+            if (grid.gridTable[block.x - 1][block.y - 1] > 0)
             {
                 return true;
             }

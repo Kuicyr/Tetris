@@ -71,6 +71,24 @@ public class Application extends javafx.application.Application
                     mainPane.getGrid().controls.down(true);
                     break;
                 }
+                case G:
+                {
+                    mainPane.getGrid().shadowBlock = !mainPane.getGrid().shadowBlock;
+                    mainPane.getGrid().controls.update();
+                    break;
+                }
+                case P:
+                {
+                    if (mainPane.getGrid().pause)
+                    {
+                        mainPane.getGrid().timer.start();
+                    } else
+                    {
+                        mainPane.getGrid().timer.stop();
+                    }
+                    mainPane.getGrid().pause = !mainPane.getGrid().pause;
+                    break;
+                }
                 case ESCAPE:
                 {
                     System.exit(0);

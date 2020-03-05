@@ -13,17 +13,21 @@ public class Grid extends Pane
     public int[][] gridTable;
     public Controls controls;
     public boolean endGame;
+    public boolean shadowBlock;
+    public boolean pause;
+    public AnimationTimer timer;
 
     private int counter;
     private int time;
-    private AnimationTimer timer;
-
 
     public Grid(NextBlock nextBlock, InfPanel infPanel)
     {
         time = 40;
         controls = new Controls(this, nextBlock, infPanel);
         endGame = false;
+        shadowBlock = false;
+        pause = false;
+
         timer = new AnimationTimer()
         {
             @Override

@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 import mr.sample.Application;
 import mr.sample.blocks.Block;
 import mr.sample.blocks.Position;
+import mr.sample.blocks.ShadowBlock;
 import mr.sample.fx.Grid;
 import mr.sample.fx.LoseGame;
 import mr.sample.fx.NextBlock;
@@ -24,6 +25,7 @@ public class Controls
     private Grid grid;
     private Collision collision;
     private BlockManager blockManager;
+    private ShadowBlock shadowBlock;
 
     public Controls(Grid grid, NextBlock nextBlock, InfPanel infPanel)
     {
@@ -36,6 +38,7 @@ public class Controls
         block = blockManager.randomBlock();
         nextBlockId = blockManager.randomBlockId();
         nextBlock.next(nextBlockId);
+        shadowBlock = new ShadowBlock(block, grid);
         setBlock();
     }
 
@@ -46,7 +49,15 @@ public class Controls
         {
             for (int y = 0; y < 20; y++)
             {
-                if (grid.gridTable[x][y] != 0)
+                if (grid.gridTable[x][y] > 0)
+                {
+                    ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/block" +
+                            grid.gridTable[x][y] + ".png"),
+                            Application.blockSize, Application.blockSize, false, true));
+                    imageView.setTranslateX(x * Application.blockSize);
+                    imageView.setTranslateY(y * Application.blockSize);
+                    grid.getChildren().add(imageView);
+                } else if (grid.gridTable[x][y] == -1 && grid.shadowBlock)
                 {
                     ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/block" +
                             grid.gridTable[x][y] + ".png"),
@@ -64,6 +75,10 @@ public class Controls
     {
         if (block != null)
         {
+            for (Position position : shadowBlock.blocks)
+            {
+                grid.gridTable[position.x - 1][position.y - 1] = 0;
+            }
             for (Position position : block.blocks)
             {
                 grid.gridTable[position.x - 1][position.y - 1] = 0;
@@ -75,6 +90,10 @@ public class Controls
     {
         if (block != null)
         {
+            for (Position position : shadowBlock.getPosition())
+            {
+                grid.gridTable[position.x - 1][position.y - 1] = -1;
+            }
             for (Position position : block.blocks)
             {
                 grid.gridTable[position.x - 1][position.y - 1] = block.id;
@@ -85,7 +104,7 @@ public class Controls
 
     public void rotate()
     {
-        if (block != null)
+        if (block != null && !grid.pause)
         {
             clearBlock();
             block.rotate();
@@ -97,7 +116,7 @@ public class Controls
 
     public void left()
     {
-        if (block != null)
+        if (block != null && !grid.pause)
         {
             clearBlock();
             block.left();
@@ -108,7 +127,7 @@ public class Controls
 
     public void right()
     {
-        if (block != null)
+        if (block != null && !grid.pause)
         {
             clearBlock();
             block.right();
@@ -119,7 +138,7 @@ public class Controls
 
     public void down(boolean allDown)
     {
-        if (block != null)
+        if (block != null && !grid.pause)
         {
             int rowNumber = 0;
             boolean czy = true;
@@ -137,6 +156,7 @@ public class Controls
                     collision.removeFullRow();
                     collision.fillGaps();
                     block = blockManager.blockId(nextBlockId);
+                    shadowBlock = new ShadowBlock(block, grid);
                     if (collision.checkForLose())
                     {
                         gameLose();
