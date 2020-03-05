@@ -179,4 +179,21 @@ public class Controls
         loseGame.display(infPanel.getScoreValue());
         grid.getChildren().add(loseGame);
     }
+
+    public void stop()
+    {
+        grid.getChildren().clear();
+        for (int x = 3; x < 7; x+=3)
+        {
+            for (int y = 8; y < 12; y++)
+            {
+                ImageView imageView = new ImageView(new Image(getClass().getResourceAsStream("/block-1.png"),
+                        Application.blockSize, Application.blockSize, false, true));
+                imageView.setTranslateX(x * Application.blockSize);
+                imageView.setTranslateY(y * Application.blockSize);
+                grid.getChildren().add(imageView);
+            }
+        }
+
+    }
 }

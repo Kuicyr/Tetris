@@ -82,9 +82,11 @@ public class Application extends javafx.application.Application
                     if (mainPane.getGrid().pause)
                     {
                         mainPane.getGrid().timer.start();
+                        mainPane.getGrid().controls.update();
                     } else
                     {
                         mainPane.getGrid().timer.stop();
+                        mainPane.getGrid().controls.stop();
                     }
                     mainPane.getGrid().pause = !mainPane.getGrid().pause;
                     break;
